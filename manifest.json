@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "XOAuth Thunderbird",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Automatically configure custom OAuth2 provider using Thunderbird Autoconfiguration (config-v1.1.xml)",
   "author": "Son Roy Almerol",
   "browser_specific_settings": {
