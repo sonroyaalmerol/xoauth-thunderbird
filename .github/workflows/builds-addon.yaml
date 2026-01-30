@@ -1,0 +1,33 @@
+name: Build Thunderbird Add-on
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build XPI
+        run: |
+          FILENAME="xoauth-tb-${{ github.ref_name }}.xpi"
+
+          # Create the XPI (zip) file
+          # -r: recursive
+          # -9: maximum compression
+          # Exclude git files, github workflows, and hidden files
+          zip -r $FILENAME . -x "*.git*" ".github/*" "README.md" ".gitignore"
+
+          echo "FILENAME=$FILENAME" >> $GITHUB_ENV
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.FILENAME }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

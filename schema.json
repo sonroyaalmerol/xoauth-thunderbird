@@ -1,0 +1,15 @@
+[
+  {
+    "namespace": "oauthprovider",
+    "functions": [
+      {
+        "name": "checkIfProviderExists",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          { "name": "hostname", "type": "string" }
+        ]
+      }
+    ]
+  }
+]
