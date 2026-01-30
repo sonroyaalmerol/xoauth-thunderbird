@@ -40,7 +40,7 @@ function clearLogs() {
 
 async function getCachedDomains() {
   try {
-    const result = await messenger.oauthprovider.getCachedDomains();
+    const result = await messenger.xoauthtb.getCachedDomains();
     return result.domains || [];
   } catch (error) {
     log(`Error getting cached domains: ${error.message}`, "error");
@@ -50,7 +50,7 @@ async function getCachedDomains() {
 
 async function getProviderDetails(domain) {
   try {
-    const details = await messenger.oauthprovider.getProviderDetails(domain);
+    const details = await messenger.xoauthtb.getProviderDetails(domain);
     return details;
   } catch (error) {
     log(`Error getting details for ${domain}: ${error.message}`, "error");
@@ -70,7 +70,7 @@ async function getAccounts() {
 
 async function refreshProvider(domain) {
   try {
-    const result = await messenger.oauthprovider.refreshProvider(domain);
+    const result = await messenger.xoauthtb.refreshProvider(domain);
     return result.exists;
   } catch (error) {
     log(`Error refreshing ${domain}: ${error.message}`, "error");
@@ -80,7 +80,7 @@ async function refreshProvider(domain) {
 
 async function clearCache(domain = null) {
   try {
-    await messenger.oauthprovider.clearCache(domain);
+    await messenger.xoauthtb.clearCache(domain);
     return true;
   } catch (error) {
     log(`Error clearing cache: ${error.message}`, "error");

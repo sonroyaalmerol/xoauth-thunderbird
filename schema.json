@@ -1,6 +1,6 @@
 [
   {
-    "namespace": "oauthprovider",
+    "namespace": "xoauthtb",
     "functions": [
       {
         "name": "checkIfProviderExists",

@@ -5,7 +5,7 @@ const { FetchConfig } = ChromeUtils.importESModule(
   "resource:///modules/accountcreation/FetchConfig.sys.mjs",
 );
 
-this.oauthprovider = class extends ExtensionCommon.ExtensionAPI {
+this.xoauthtb = class extends ExtensionCommon.ExtensionAPI {
   onStartup() {
     console.log("[XOAuthTB] Extension starting...");
 
@@ -124,7 +124,7 @@ this.oauthprovider = class extends ExtensionCommon.ExtensionAPI {
     const ConfigCache = sandbox.ConfigCache;
 
     return {
-      oauthprovider: {
+      xoauthtb: {
         async checkIfProviderExists(hostname) {
           const exists = ConfigFetcher.fetchAndRegister(hostname);
           return { exists };
