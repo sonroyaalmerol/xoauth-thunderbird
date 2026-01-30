@@ -6,8 +6,9 @@
   "author": "Son Roy Almerol",
   "browser_specific_settings": {
     "gecko": {
-      "id": "github@snry.me",
-      "strict_min_version": "140.0"
+      "id": "xoauthtb@snry.me",
+      "strict_min_version": "140.0",
+      "strict_max_version": "147.0"
     }
   },
   "permissions": [
