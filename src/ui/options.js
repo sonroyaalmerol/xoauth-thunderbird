@@ -22,7 +22,13 @@ function log(message, type = "info") {
   const timestamp = new Date().toLocaleTimeString();
   const entry = document.createElement("p");
   entry.className = `log-entry log-${type}`;
-  entry.innerHTML = `<span class="log-timestamp">[${timestamp}]</span>${message}`;
+
+  const timestampSpan = document.createElement("span");
+  timestampSpan.className = "log-timestamp";
+  timestampSpan.textContent = `[${timestamp}]`;
+
+  entry.appendChild(timestampSpan);
+  entry.appendChild(document.createTextNode(message));
 
   elements.logContainer.appendChild(entry);
   elements.logContainer.scrollTop = elements.logContainer.scrollHeight;
@@ -132,31 +138,60 @@ function renderProviderItem(details) {
   const statusClass = details.isStale ? "status-stale" : "status-fresh";
   const statusText = details.isStale ? "Stale" : "Fresh";
 
-  item.innerHTML = `
-    <div class="provider-info">
-      <div class="provider-domain">${details.domain}</div>
-      <div class="provider-details">
-        <span class="provider-detail">
-          Cached: ${formatTimeAgo(details.cachedAt)}
-        </span>
-        <span class="provider-detail">
-          <span class="status-badge ${statusClass}">
-            ${statusText}
-          </span>
-        </span>
-      </div>
-    </div>
-    <div class="provider-actions">
-      <button class="btn btn-small btn-primary refresh-btn" data-domain="${details.domain}">
-        <span class="icon">↻</span>
-        Refresh
-      </button>
-      <button class="btn btn-small btn-danger remove-btn" data-domain="${details.domain}">
-        <span class="icon">✕</span>
-        Remove
-      </button>
-    </div>
-  `;
+  const providerInfo = document.createElement("div");
+  providerInfo.className = "provider-info";
+
+  const providerDomain = document.createElement("div");
+  providerDomain.className = "provider-domain";
+  providerDomain.textContent = details.domain;
+
+  const providerDetails = document.createElement("div");
+  providerDetails.className = "provider-details";
+
+  const cachedSpan = document.createElement("span");
+  cachedSpan.className = "provider-detail";
+  cachedSpan.textContent = `Cached: ${formatTimeAgo(details.cachedAt)}`;
+
+  const statusSpan = document.createElement("span");
+  statusSpan.className = "provider-detail";
+
+  const statusBadge = document.createElement("span");
+  statusBadge.className = `status-badge ${statusClass}`;
+  statusBadge.textContent = statusText;
+
+  statusSpan.appendChild(statusBadge);
+  providerDetails.appendChild(cachedSpan);
+  providerDetails.appendChild(statusSpan);
+
+  providerInfo.appendChild(providerDomain);
+  providerInfo.appendChild(providerDetails);
+
+  const providerActions = document.createElement("div");
+  providerActions.className = "provider-actions";
+
+  const refreshBtn = document.createElement("button");
+  refreshBtn.className = "btn btn-small btn-primary refresh-btn";
+  refreshBtn.dataset.domain = details.domain;
+  const refreshIcon = document.createElement("span");
+  refreshIcon.className = "icon";
+  refreshIcon.textContent = "↻";
+  refreshBtn.appendChild(refreshIcon);
+  refreshBtn.appendChild(document.createTextNode(" Refresh"));
+
+  const removeBtn = document.createElement("button");
+  removeBtn.className = "btn btn-small btn-danger remove-btn";
+  removeBtn.dataset.domain = details.domain;
+  const removeIcon = document.createElement("span");
+  removeIcon.className = "icon";
+  removeIcon.textContent = "✕";
+  removeBtn.appendChild(removeIcon);
+  removeBtn.appendChild(document.createTextNode(" Remove"));
+
+  providerActions.appendChild(refreshBtn);
+  providerActions.appendChild(removeBtn);
+
+  item.appendChild(providerInfo);
+  item.appendChild(providerActions);
 
   return item;
 }
