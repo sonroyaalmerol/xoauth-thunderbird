@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "XOAuth Thunderbird",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Automatically configure custom OAuth2 provider using Thunderbird Autoconfiguration (config-v1.1.xml)",
   "author": "Son Roy Almerol",
   "browser_specific_settings": {
@@ -10,20 +10,19 @@
       "strict_min_version": "140.0"
     }
   },
-  "background": {
-    "page": "background.html"
-  },
   "permissions": [
-    "accountsRead",
-    "webRequest",
-    "webRequestBlocking"
+    "accountsRead"
   ],
+  "options_ui": {
+    "page": "src/ui/options.html",
+    "open_in_tab": true
+  },
   "experiment_apis": {
     "oauthprovider": {
       "schema": "schema.json",
       "parent": {
         "scopes": ["addon_parent"],
-        "script": "implementation.js",
+        "script": "src/main.js",
         "paths": [["oauthprovider"]],
         "events": ["startup"]
       }

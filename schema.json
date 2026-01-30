@@ -5,6 +5,46 @@
       {
         "name": "checkIfProviderExists",
         "type": "function",
+        "description": "Check if an OAuth provider exists (uses cache)",
+        "async": true,
+        "parameters": [
+          { "name": "hostname", "type": "string" }
+        ]
+      },
+      {
+        "name": "refreshProvider",
+        "type": "function",
+        "description": "Force refresh provider config from network",
+        "async": true,
+        "parameters": [
+          { "name": "hostname", "type": "string" }
+        ]
+      },
+      {
+        "name": "clearCache",
+        "type": "function",
+        "description": "Clear cached config for a domain or all domains",
+        "async": true,
+        "parameters": [
+          {
+            "name": "hostname",
+            "type": "string",
+            "optional": true,
+            "description": "Domain to clear, or omit to clear all"
+          }
+        ]
+      },
+      {
+        "name": "getCachedDomains",
+        "type": "function",
+        "description": "Get list of all cached domains",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "getProviderDetails",
+        "type": "function",
+        "description": "Get detailed info about a cached provider",
         "async": true,
         "parameters": [
           { "name": "hostname", "type": "string" }

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XOAuth Thunderbird - Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>XOAuth Thunderbird</h1>
+        <p class="subtitle">OAuth2 Provider Configuration Manager</p>
+      </header>
+
+      <main>
+        <!-- Statistics Section -->
+        <section class="card stats-section">
+          <h2>Statistics</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-label">Cached Providers</span>
+              <span class="stat-value" id="cachedCount">-</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Active Accounts</span>
+              <span class="stat-value" id="accountCount">-</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Actions Section -->
+        <section class="card actions-section">
+          <h2>Actions</h2>
+          <div class="button-group">
+            <button id="refreshAllBtn" class="btn btn-primary">
+              <span class="icon">↻</span>
+              Refresh All Providers
+            </button>
+            <button id="clearCacheBtn" class="btn btn-danger">
+              <span class="icon">✕</span>
+              Clear All Cache
+            </button>
+            <button id="scanAccountsBtn" class="btn btn-secondary">
+              <span class="icon">↻</span>
+              Scan Accounts
+            </button>
+          </div>
+        </section>
+
+        <!-- Provider List Section -->
+        <section class="card providers-section">
+          <div class="section-header">
+            <h2>Cached OAuth Providers</h2>
+            <button id="reloadListBtn" class="btn btn-small btn-secondary">
+              <span class="icon">↻</span>
+              Reload
+            </button>
+          </div>
+
+          <div id="loadingIndicator" class="loading">
+            <div class="spinner"></div>
+            <p>Loading providers...</p>
+          </div>
+
+          <div id="emptyState" class="empty-state" style="display: none">
+            <p>No cached providers found.</p>
+            <p class="hint">
+              Providers will be cached automatically when you add email
+              accounts.
+            </p>
+          </div>
+
+          <div id="providerList" class="provider-list"></div>
+        </section>
+
+        <!-- Logs Section -->
+        <section class="card logs-section">
+          <div class="section-header">
+            <h2>Activity Log</h2>
+            <button id="clearLogsBtn" class="btn btn-small btn-secondary">
+              <span class="icon">✕</span>
+              Clear
+            </button>
+          </div>
+          <div id="logContainer" class="log-container">
+            <p class="log-entry log-info">Ready</p>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>
+          XOAuth Thunderbird v0.2.0 |
+          <a
+            href="https://github.com/sonroyaalmerol/xoauth-thunderbird"
+            target="_blank"
+            >GitHub</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>
