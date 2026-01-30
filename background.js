@@ -38,6 +38,12 @@ async function registerExistingAccounts() {
   }
 }
 
+function keep_alive() {
+  let getting = browser.runtime.getPlatformInfo();
+  setTimeout(keep_alive, "20000");
+}
+
+keep_alive();
 registerExistingAccounts();
 
 messenger.accounts.onCreated.addListener((accountId, account) => {
