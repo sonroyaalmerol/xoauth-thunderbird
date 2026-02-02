@@ -1,14 +1,13 @@
 {
   "manifest_version": 2,
   "name": "XOAuth Thunderbird",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Automatically configure custom OAuth2 provider using Thunderbird Autoconfiguration (config-v1.1.xml)",
   "author": "Son Roy Almerol",
   "browser_specific_settings": {
     "gecko": {
       "id": "xoauthtb@snry.me",
-      "strict_min_version": "140.0",
-      "strict_max_version": "147.0"
+      "strict_min_version": "140.0"
     }
   },
   "permissions": [
